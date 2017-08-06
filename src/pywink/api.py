@@ -88,7 +88,8 @@ class WinkApiInterface(object):
                                                          object_type,
                                                          local_id)
             try:
-                arequest = requests.put(url_string,
+                session = requests.Session()
+                arequest = session.put(url_string,
                                         data=json.dumps(state),
                                         headers=LOCAL_API_HEADERS,
                                         verify=False, timeout=3)
@@ -141,7 +142,7 @@ class WinkApiInterface(object):
                                                          object_type,
                                                          local_id)
             try:
-                arequest = requests.get(url_string,
+                arequest = session.get(url_string,
                                         headers=LOCAL_API_HEADERS,
                                         verify=False, timeout=3)
             except:
